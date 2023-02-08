@@ -135,6 +135,11 @@ public class Examples { // This is a class declaration
         int age = 26; // int
         String favcolor = "Black"; // String
 
+        String testa = "Greg";
+        String testb = "Jake";
+
+        // testa = "null";
+
         // Print the variables with String Concatenation
 
         System.out.println("My name is " + name + " and I am " + age + " years old. My favorite color is " + favcolor + ".");

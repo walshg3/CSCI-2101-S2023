@@ -22,13 +22,13 @@ public class CatNames {
         System.out.println(out);
         System.out.println(a.getCat1());
 
+        // Call the setter methods
+        System.out.println("Before: " + a.getCat1());
+        a.setCat1("Alice");
+        System.out.println("After: " + a.getCat1());
+
 
         Playground b = new Playground();
         System.out.println(b.addQuestionMark(out));
-
     }
-
-
-
-    
 }

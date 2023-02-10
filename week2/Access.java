@@ -17,6 +17,12 @@ public class Access {
     public String getCat1() {
         return cat1;
     }
+
+    // Setter Method
+    public void setCat1(String x) {
+        cat1 = x;
+    }
+    
     
 
 

@@ -89,5 +89,28 @@ public class Person {
         return this.name.substring(0, 3);
     }
 
+    // Create a method that returns the initials of the person
+    // ie if the name is "John Doe" it should return "JD"
+    // John Doe
+    // 01234567 -> computer
+    // 12345678 -> human
+    // Place holder for when we learn if statements
+    public String getInitials() {
+        String firstInitial = this.name.substring(0, 1);
+        String secondInitial = this.name.substring(this.name.indexOf(" ") + 1, this.name.indexOf(" ") + 2);
+        return firstInitial + secondInitial;
+    }
+
+    // Create a method that will return the char at the given index
+    // ie if the name is "John Doe" and the index is 2 it should return 'h'
+    public char getCharAtIndex(int index) {
+        return this.name.charAt(index);
+    }
+
+    //Create a method that will return the first charecter of the name and the last character of the name
+    // ie if the name is "John Doe" it should return "Je"
+    public String getFirstAndLast() {
+        return this.name.substring(0, 1) + this.name.substring(this.name.length() - 1);
+    }
     
 }

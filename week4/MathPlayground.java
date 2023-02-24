@@ -6,8 +6,7 @@ public class MathPlayground {
      * 
      */
 
-  public class MathPlayground {
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         System.out.println("Start of Math Playground!");
         int x = 5;
         int y = 10;
@@ -24,10 +23,12 @@ public class MathPlayground {
         System.out.println(Math.min(x, y));
         // Math random function
         System.out.println(Math.random()); // 0.0 -> 1.0
-        // create a random number between 1 and 10
+        // Math random function with a range
         int randomNumber = (int) (Math.random() * 10) + 1;
         System.out.println(randomNumber);
         // q: what is (int) in the example above?
         // a: (int) is a cast operator
-    }
+        // q: what does the cast operator do?
+        // a: it converts the data type of the value on the right to the data type on the left
+     }
 }

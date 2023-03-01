@@ -17,15 +17,23 @@ public class UserInput {
         // Collect the user input and save it to the variable called nam
         // netxLine() is a method of the Scanner class
         name = keyboard.nextLine();
-        // wait 5 seconds before printing the name
+
 
         System.out.println("Hello " + name);
 
-        // int age = keyboard.nextInt();
+        System.out.println("How old are you?");
 
+        int age = keyboard.nextInt();
 
+        System.out.println("You are " + age + " years old");
 
-        
-    
+        System.out.println("How tall are you? (feet)");
+
+        double height = keyboard.nextDouble();
+
+        System.out.println("You are " + height + " feet tall");
+
+        keyboard.close();
+
     }
 }

@@ -87,21 +87,44 @@ public class Logic {
 
 
         // This doesn't check for sally though - how can we fix this?
-        if (name.equalsIgnoreCase("Tom") || name.equalsIgnoreCase("Bob") || name.equalsIgnoreCase("Sally")) { // IF NAME IS TOM OR BOB OR SALLY
-            System.out.println("Hello " + name + "! Welcome in!");
-        } else {
-            System.out.println("Hello " + name + "! Nice to meet you.");
-        }
+        // if (name.equalsIgnoreCase("Tom") || name.equalsIgnoreCase("Bob") || name.equalsIgnoreCase("Sally")) { // IF NAME IS TOM OR BOB OR SALLY
+        //     System.out.println("Hello " + name + "! Welcome in!");
+        // } else {
+        //     System.out.println("Hello " + name + "! Nice to meet you.");
+        // }
 
 
         // Call in a scanner and collect user input for their age
+        // Check if age is 21 and do not let the person in if they are not 21
+        System.out.println("What is your age?");
+        int age = keyboard.nextInt();
 
-        
+        // if (age >= 21) { // IF AGE IS GREATER THAN OR EQUAL TO 21
+        //     System.out.println("You are old enough to enter!");
+        // } else {
+        //     System.out.println("You are not old enough to enter!");
+        // }
 
+        // This is good but ideally id like to add it to the previous if statement
 
+        // A good example of a nested if statement
 
+        if (name.equalsIgnoreCase("Tom") || name.equalsIgnoreCase("Bob") || name.equalsIgnoreCase("Sally")) { // IF NAME IS TOM OR BOB OR SALLY
+            if (age >= 21) { // IF AGE IS GREATER THAN OR EQUAL TO 21
+                System.out.println("Hey "+ name +", You are old enough to enter!");
+            } else {
+                System.out.println("Hey "+ name +",You are not old enough to enter!");
+            }
+        } else {
+            System.out.println("Hello " + name + "! Nice to meet you. You got ratio bro?");
+        }
 
-
+        // if we wanted to check their name and age we could do this
+        if (name.equalsIgnoreCase("Tom") || name.equalsIgnoreCase("Bob") || name.equalsIgnoreCase("Sally") && age >= 21) { // IF NAME IS TOM OR BOB OR SALLY
+            System.out.println("You are old enough to enter!");
+        } else {
+            System.out.println("You are not old enough to enter!");
+        }
 
 
     }

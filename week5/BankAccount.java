@@ -1,4 +1,6 @@
 package week5;
+
+    import java.util.Scanner;
     /*
      * Appas Bank
      * Bank Account Parameters:
@@ -108,8 +110,6 @@ public class BankAccount {
 
 
 
-
-
     public void deposit(double amount) {
         this.balance += amount;
     }
@@ -118,14 +118,21 @@ public class BankAccount {
         this.balance -= amount;
     }
 
-    public void transfer(double amount, BankAccount other) {
-        this.withdraw(amount);
-        other.deposit(amount);
+
+    // Create a mthod that will subtract a mothly fee from the balance
+    // this method will take a double as a parameter
+    // this method will subtract the fee from the balance
+    // Netflix subscription is $12.99
+    public void monthlyFee(double fee) {
+        withdraw(fee);
     }
 
 
-
-    public void menu() {
+    // Create a method that will print a menu to the user
+    // This is called a helper method / function
+    public static int menu() {
+        int choice;
+        Scanner input = new java.util.Scanner(System.in);
         System.out.println("Welcome to Appas Bank");
         System.out.println("1. Deposit");
         System.out.println("2. Withdraw");
@@ -133,7 +140,10 @@ public class BankAccount {
         System.out.println("4. Balance");
         System.out.println("5. Compound Interest");
         System.out.println("6. Simple Interest");
-        System.out.println("7. Exit");
+        System.out.println("0. Exit");
+        System.out.println("Please enter your choice: ");
+        choice = input.nextInt();
+        return choice;
     }
 
     public void compoundInterest(double rate, int years) {
@@ -160,10 +170,4 @@ public class BankAccount {
 //         System.out.println(yourAccount.balance());
 //         myAccount.menu();
 //         myAccount.compoundInterest(0.05, 5);
-
-
-
-
-
-
 // }

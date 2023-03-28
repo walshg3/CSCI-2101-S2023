@@ -36,6 +36,8 @@ public class BankAccount {
     private String dob;
     private int ssn;
     private int accountNumber;
+    public double interestRate = 0.01;
+    public int period = 4; // quarterly
 
 
 
@@ -136,38 +138,81 @@ public class BankAccount {
         System.out.println("Welcome to Appas Bank");
         System.out.println("1. Deposit");
         System.out.println("2. Withdraw");
-        System.out.println("3. Transfer");
+        System.out.println("3. Transfer"); // HomeWork
         System.out.println("4. Balance");
         System.out.println("5. Compound Interest");
-        System.out.println("6. Simple Interest");
+        System.out.println("6. Simple Interest"); // HomeWork
         System.out.println("0. Exit");
         System.out.println("Please enter your choice: ");
         choice = input.nextInt();
         return choice;
     }
 
-    public void compoundInterest(double rate, int years) {
-        double interest = this.balance * Math.pow((1 + rate), years);
-        this.balance += interest;
+    public void printBalance(){
+        System.out.println("Your balance is: $" + this.balance);
     }
 
-    public void simpleInterest(double rate, int years) {
-        double interest = this.balance * rate * years;
-        this.balance += interest;
+
+    // Create a method that will interact with the user based on their choice from the menu method
+    // This method will take a Bank Account as a parameter
+    public static void interact(BankAccount account){
+        // get the choice from the menu method
+        int choice = menu();
+        // create a scanner object
+        Scanner input = new java.util.Scanner(System.in);
+        // use that choice and run the method associated with that choice
+
+        if (choice == 1){
+            System.out.println("Please enter the amount you would like to deposit: ");
+            double amount = input.nextDouble();
+            account.deposit(amount);
+            account.printBalance();
+        } else if (choice == 2){
+            System.out.println("How much would you like to withdraw?");
+            double amount = input.nextDouble();
+            account.withdraw(amount);
+            account.printBalance();
+        } // place holder for choice 3
+        else if (choice == 4){
+            account.printBalance();
+        } else if (choice == 5){
+            System.out.println("How many years? (Whole numbers only)");
+            int years = input.nextInt();
+            account.compoundInterest(account.getbalance(), years, account.interestRate, account.period);
+            account.printBalance();
+        } // place holder for choice 6
+        else if (choice == 0){
+            System.out.println("Thank you for banking with Appas Bank");
+        } else { // this would catch any invalid choices like
+            System.out.println("Invalid choice");
+        }
+
     }
+
+    // Create a method that will calculate the interest on the balance using compound interest
+    // P(1 + R/n)^(nt) - P 
+    // A = P(1 + R/n)^(nt)
+    // P = Principal
+    // R = Rate
+    // n = number of times interest is compounded per year (annum)
+    // t = number of years
+    // This method will take a double as an argument
+    // This method will return a double
+
+    // P can be this.balance or getBalance() if you would like to use a getter
+
+    public void compoundInterest(double principal, int time, double rate, int annum) {
+        double amount = principal * Math.pow(1 + (rate/annum), annum * time);
+        double roundedAmount = Math.round(amount * 100.0) / 100.0;
+        double compinterest = amount - principal; // A-P
+        compinterest = Math.round(compinterest * 100.0) / 100;
+
+        System.out.println("Current Rate is: "+ rate +"%");
+        System.out.println("Current Period is: "+ annum +" times per year");
+        System.out.println("Selected Time is: "+ time +" years");
+        System.out.println("Compound Interest after "+ time +" years is: $"+ compinterest);
+        System.out.println("Total Amount after "+ time +" years is: $"+ roundedAmount);
+    }
+
 
 }
-//     public static void main(String[] args) {
-//         System.out.println("Hello World");
-
-//         BankAccount myAccount = new BankAccount("Appa", 1000, 123456789, 123456789, "01/01/2000");
-//         BankAccount yourAccount = new BankAccount("Momo", 123456789);
-
-//         myAccount.deposit(100);
-//         myAccount.withdraw(50);
-//         myAccount.transfer(100, yourAccount);
-//         System.out.println(myAccount.balance());
-//         System.out.println(yourAccount.balance());
-//         myAccount.menu();
-//         myAccount.compoundInterest(0.05, 5);
-// }

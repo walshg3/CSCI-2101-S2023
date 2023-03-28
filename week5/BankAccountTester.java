@@ -5,7 +5,7 @@ public class BankAccountTester {
         System.out.println("Hello World");
         // this is another test
         BankAccount myAccount = new BankAccount("MOMO", 8675309);
-
+        // this is a second test
         System.out.println(myAccount.name);
 
         BankAccount yourAccount = new BankAccount("Katara", 1234567, 1000, 101, "01/01/2000");

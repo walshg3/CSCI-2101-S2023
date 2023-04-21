@@ -3,6 +3,9 @@ package week8;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
+import java.util.Random;
+
+import week5.BankAccount;
 
 
 public class ArrayLists {
@@ -100,9 +103,157 @@ public class ArrayLists {
         Collections.sort(cars);
         System.out.println("After: "+ cars);
 
+        // we imported the bank account class and can create a bank account object like we are used to.
+
+        BankAccount test = new BankAccount("Test", 1000);
+
+        System.out.println(test.getssn());
+
+        // We know ArrayLists can only hold objects
+        // We can create an ArrayList of objects
+        // We know the BankAccount Object was just made above
+        // So maybe we can add objects into ArrayLists in the form of Bank Accounts
+
+        ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
+
+        System.out.println(accounts);
+
+        accounts.add(test);
+
+        System.out.println(accounts);
+
+        // notice the output is @1e4e1c which is the memory address of the object
+
+        // We can also create a new object and add it to the ArrayList
+        // Lets add more accounts to the ArrayList
+        accounts.add(new BankAccount("Josh", 1000, 10000, 867540, "10/25/1996"));
+        accounts.add(new BankAccount("John", 1000, 5000, 867540, "10/25/1996"));
+        accounts.add(new BankAccount("Jill", 1000, 6000, 867540, "10/25/1996"));
+        accounts.add(new BankAccount("Jack", 1000, 7000, 867540, "10/25/1996"));
+        accounts.add(new BankAccount("Jane", 1000, 8000, 867540, "10/25/1996"));
+
+        
+
+        System.out.println(accounts);
+        
+        // Get one specific account from the ArrayList
+        System.out.println(accounts.get(0));
+        // Print the name of the 2st index of the ArrayList
+        // In order to do this we need to use the getName() method from the BankAccount class
+        // Notice we use the .get method to get the index of the ArrayList and then we use the .getName() method to get the name of the account
+        System.out.println(accounts.get(1).getName());
+
+        // How do we loop through an ArrayList?
+        // We can use a for loop
+        // We can use a for each loop
+        // We can use a while loop
+
+        // For Loop
+        for (int i = 0; i < accounts.size(); i++) {
+            System.out.println(accounts.get(i).getName());
+        }
+
+        // For Each Loop
+        for (BankAccount account : accounts) {
+            System.out.println(account.getbalance());
+        }
+
+        // While Loop
+        int i = 0;
+        while (i < accounts.size()) {
+            accounts.get(i).deposit(100);
+            i++;
+        }
+
+        System.out.println("After the while loop: ");
+        for (BankAccount account : accounts) {
+            System.out.println(account.getbalance());
+        }
+
+        System.out.println(highestBalance(accounts));
+        System.out.println(lowestBalance(accounts));
+
+        System.out.println(generateRandomBinary());
+
+        applyMonthlyFee(accounts);
+
 
 
 
 
     }
+
+    // Create a method that will take in an ArrayList of BankAccounts and return the name of the account with the highest balance
+    public static String highestBalance(ArrayList<BankAccount> accounts) {
+        // We need to create a variable to hold the highest balance
+        double highestBalance = 0;
+        // We need to create a variable to hold the name of the account with the highest balance
+        String highestBalanceName = "";
+        // We need to loop through the ArrayList
+        for (BankAccount account : accounts) {
+            // We need to check if the balance of the current account is greater than the highest balance
+            if (account.getbalance() > highestBalance) {
+                // If it is we need to update the highest balance
+                highestBalance = account.getbalance();
+                // We also need to update the name of the account with the highest balance
+                highestBalanceName = account.getName();
+            }
+        }
+        // We need to return the name of the account with the highest balance
+        return highestBalanceName;
+    }
+
+    // Create a method that will take in an ArrayList of BankAccounts and return the name of the account with the lowest balance
+    public static String lowestBalance(ArrayList<BankAccount> accounts) {
+        // We need to create a variable to hold the lowest balance
+        double lowestBalance = 100000000;
+        // We need to create a variable to hold the name of the account with the lowest balance
+        String lowestBalanceName = "";
+        // We need to loop through the ArrayList
+        for (BankAccount account : accounts) {
+            // We need to check if the balance of the current account is less than the lowest balance
+            if (account.getbalance() < lowestBalance) {
+                // If it is we need to update the lowest balance
+                lowestBalance = account.getbalance();
+                // We also need to update the name of the account with the lowest balance
+                lowestBalanceName = account.getName();
+            }
+        }
+        // We need to return the name of the account with the lowest balance
+        return "Lowest account " + lowestBalanceName;
+    }
+
+    // This is really helpful for project 3
+    // Create an Array list that generates a 1 or 0 randomly and adds it to an ArrayList
+    public static ArrayList<Integer> generateRandomBinary() {
+        // Create an ArrayList of type Integer
+        ArrayList<Integer> binary = new ArrayList<Integer>();
+        // Create a random object
+        Random rand = new Random();
+        // Loop 10 times
+        for (int i = 0; i < 10; i++) {
+            // Generate a random number between 0 and 1
+            int randomNum = rand.nextInt(2);
+            // with the Math.Random Class
+            // int randomNum = (int) (Math.random() * 2);
+            // Add the random number to the ArrayList
+            binary.add(randomNum);
+        }
+        // Return the ArrayList
+        return binary;
+    }
+
+    // Create a method that will take in an ArrayList of BankAccounts and apply the monthly fee method and print the name of the account and the new balance
+    public static void applyMonthlyFee(ArrayList<BankAccount> accounts) {
+        // Loop through the ArrayList
+        for (BankAccount account : accounts) {
+            System.out.println("Account name: "+ account.getName() + "\nAccount Balance: " + account.getbalance());
+            // Apply the monthly fee method
+            account.monthlyFee(20);
+            // Print the name of the account and the new balance
+            System.out.println("Account name: "+ account.getName() + "\nAccount Balance after Monthly Fee: " + account.getbalance());
+        }
+    }
+
+
 }
